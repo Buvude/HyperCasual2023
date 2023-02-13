@@ -28,20 +28,14 @@ public class Dumpyscript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("entered");
-        foreach (SpriteRenderer sR in this.gameObject.GetComponentsInChildren<SpriteRenderer>())
-        {
-            sR.enabled = false;
-        }
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         privcol = true;
         print("Collected");
     }
     public void ResetPosition()
     {
         this.gameObject.transform.position = set.position;
-        foreach (SpriteRenderer sR in this.gameObject.GetComponentsInChildren<SpriteRenderer>())
-        {
-            sR.enabled = true;
-        }
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
     public void postAnimation()
     {
