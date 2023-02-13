@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6965059072979426739}
   - component: {fileID: 6965059072979426749}
   - component: {fileID: 2640224148203116943}
+  - component: {fileID: 4683420593946925589}
   m_Layer: 0
   m_Name: Good Collectable
   m_TagString: Untagged
@@ -112,13 +113,26 @@ Animator:
   m_GameObject: {fileID: 6965059072979426736}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d664016941aa3a44a9a6da91e7f5d842, type: 2}
+  m_Controller: {fileID: 9100000, guid: 56930cd5f1966e64eb03ca86875fc6e2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4683420593946925589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6965059072979426736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8119358bc269bf245ba92bbb0114d65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: []
