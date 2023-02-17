@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit
       objectReference: {fileID: 0}
+    - target: {fileID: 2191053647652442029, guid: 4d2e6a4f5c178be4993ec9eae39cafad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d2e6a4f5c178be4993ec9eae39cafad, type: 3}
 --- !u!1001 &158680718
@@ -446,6 +450,7 @@ MonoBehaviour:
   set: {fileID: 342455601}
   collected: 0
   foodItem: []
+  OS: {fileID: 5873552762642672066}
 --- !u!1 &389429621 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6125943964434142744, guid: 77e1ad904f83e5042a97e5708f83a229, type: 3}
@@ -1199,6 +1204,7 @@ MonoBehaviour:
   set: {fileID: 179576497}
   collected: 0
   foodItem: []
+  OS: {fileID: 5873552762642672066}
 --- !u!212 &923471902
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1403,7 +1409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1015616319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1604,7 +1610,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.1
+  m_fontSize: 21.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1930,6 +1936,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4683420593946925589, guid: bf59cb3e483b8bd4f8bff9973088d61b, type: 3}
+      propertyPath: OS
+      value: 
+      objectReference: {fileID: 5873552762642672066}
     - target: {fileID: 4683420593946925589, guid: bf59cb3e483b8bd4f8bff9973088d61b, type: 3}
       propertyPath: set
       value: 
@@ -2555,7 +2565,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.55
+  m_fontSize: 19.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2795,6 +2805,34 @@ PrefabInstance:
       value: Obstacles Manager
       objectReference: {fileID: 0}
     - target: {fileID: 5873552763449818923, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
+      propertyPath: nODL
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873552763449818923, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
+      propertyPath: sASM
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873552763449818923, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
+      propertyPath: dumpy
+      value: 
+      objectReference: {fileID: 923471897}
+    - target: {fileID: 5873552763449818923, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
+      propertyPath: nOBIL
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873552763449818923, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
+      propertyPath: nOGIL
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873552763449818923, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
+      propertyPath: badCollect
+      value: 
+      objectReference: {fileID: 342455602}
+    - target: {fileID: 5873552763449818923, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
+      propertyPath: goodColect
+      value: 
+      objectReference: {fileID: 561607042}
+    - target: {fileID: 5873552763449818923, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
       propertyPath: badItemCounter
       value: 
       objectReference: {fileID: 1378117436}
@@ -2804,6 +2842,17 @@ PrefabInstance:
       objectReference: {fileID: 1855986128}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
+--- !u!114 &5873552762642672066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5873552763449818923, guid: afb5d4b083d8b83408b3e19714c06579, type: 3}
+  m_PrefabInstance: {fileID: 5873552762642672065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4edcea2c25a24004897f58db57d0dce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6125943964219322221
 PrefabInstance:
   m_ObjectHideFlags: 0

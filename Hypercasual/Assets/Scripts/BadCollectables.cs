@@ -8,6 +8,7 @@ public class BadCollectables : MonoBehaviour
     private bool privcol;
     public bool collected;
     public List<Sprite> foodItem = new List<Sprite>();
+    public ObjectSpawning OS;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,11 @@ public class BadCollectables : MonoBehaviour
     {
         print(collision + " has entered collision");
     }*/
-
+    public void ResetCol()
+    {
+        privcol = false;
+        collected = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("entered");
@@ -47,5 +52,7 @@ public class BadCollectables : MonoBehaviour
         {
             ResetPosition();
         }
+        OS.nOBIL--;
+        OS.ChooseNextItem();
     }
 }
