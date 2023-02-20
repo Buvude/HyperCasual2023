@@ -9,6 +9,8 @@ TagManager:
   - unNeededIngredients
   - dumpy
   - CookingIngredient
+  - FoodSpawner
+  - RoundTwo
   layers:
   - Default
   - TransparentFX

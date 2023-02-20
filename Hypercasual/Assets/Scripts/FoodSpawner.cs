@@ -29,23 +29,39 @@ public class FoodSpawner : MonoBehaviour
 
             case SceneAndScoreManagment.FoodItemsCollected.Pizza_Dough:
                 FSFoodForThisRound.GetComponent<SpriteRenderer>().sprite = sasm.SL.PizzDough;
-                Instantiate(FSFoodForThisRound);
+                Instantiate(FSFoodForThisRound).GetComponent<CookingPhaseOneFood>().whatAmI = SceneAndScoreManagment.FoodItemsCollected.Pizza_Dough;
                 break;
             case SceneAndScoreManagment.FoodItemsCollected.Pizza_Pineapple:
+                FSFoodForThisRound.GetComponent<SpriteRenderer>().sprite = sasm.SL.PizzBestTopping;
+                Instantiate(FSFoodForThisRound).GetComponent<CookingPhaseOneFood>().whatAmI = SceneAndScoreManagment.FoodItemsCollected.Pizza_Pineapple;
                 break;
             case SceneAndScoreManagment.FoodItemsCollected.Pizza_Sauce:
+                FSFoodForThisRound.GetComponent<SpriteRenderer>().sprite = sasm.SL.PizzSauce;
+                Instantiate(FSFoodForThisRound).GetComponent<CookingPhaseOneFood>().whatAmI = SceneAndScoreManagment.FoodItemsCollected.Pizza_Sauce;
                 break;
             case SceneAndScoreManagment.FoodItemsCollected.Pizza_Peperoni:
+                FSFoodForThisRound.GetComponent<SpriteRenderer>().sprite = sasm.SL.PizzPep;
+                Instantiate(FSFoodForThisRound).GetComponent<CookingPhaseOneFood>().whatAmI = SceneAndScoreManagment.FoodItemsCollected.Pizza_Peperoni;
                 break;
             case SceneAndScoreManagment.FoodItemsCollected.Burger_Bun:
+                FSFoodForThisRound.GetComponent<SpriteRenderer>().sprite = sasm.SL.hBurgBun;
+                Instantiate(FSFoodForThisRound).GetComponent<CookingPhaseOneFood>().whatAmI = SceneAndScoreManagment.FoodItemsCollected.Burger_Bun;
                 break;
             case SceneAndScoreManagment.FoodItemsCollected.Burger_Cheese:
+                FSFoodForThisRound.GetComponent<SpriteRenderer>().sprite = sasm.SL.hBurgCheese;
+                Instantiate(FSFoodForThisRound).GetComponent<CookingPhaseOneFood>().whatAmI = SceneAndScoreManagment.FoodItemsCollected.Burger_Cheese;
                 break;
             case SceneAndScoreManagment.FoodItemsCollected.Burger_ketchapp:
+                FSFoodForThisRound.GetComponent<SpriteRenderer>().sprite = sasm.SL.hBurgKetchapp;
+                Instantiate(FSFoodForThisRound).GetComponent<CookingPhaseOneFood>().whatAmI = SceneAndScoreManagment.FoodItemsCollected.Burger_ketchapp;
                 break;
             case SceneAndScoreManagment.FoodItemsCollected.Burger_Mustard:
+                FSFoodForThisRound.GetComponent<SpriteRenderer>().sprite = sasm.SL.hBurgMustard;
+                Instantiate(FSFoodForThisRound).GetComponent<CookingPhaseOneFood>().whatAmI = SceneAndScoreManagment.FoodItemsCollected.Burger_Mustard;
                 break;
             case SceneAndScoreManagment.FoodItemsCollected.Burger_Lettuce:
+                FSFoodForThisRound.GetComponent<SpriteRenderer>().sprite = sasm.SL.hBurgLetuce;
+                Instantiate(FSFoodForThisRound).GetComponent<CookingPhaseOneFood>().whatAmI = SceneAndScoreManagment.FoodItemsCollected.Burger_Lettuce;
                 break;
             default:
                 break;

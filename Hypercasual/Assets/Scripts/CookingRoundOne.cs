@@ -6,13 +6,15 @@ using TMPro;
 public class CookingRoundOne : MonoBehaviour
 {
     
-    public GameObject RTRoundOne;
+    public GameObject RTRoundOne, FoodThatIsInTheArea;
     public TextMeshProUGUI Counter;
     public FoodSpawner FS;
     public bool FoodInArea;
     public SceneAndScoreManagment sasm;
     public int CurrentIngredientCount;
     private int IngredientsNeeded = 0;
+    public List<SceneAndScoreManagment.FoodItemsCollected> FoodCollectedInRoundOne = new List<SceneAndScoreManagment.FoodItemsCollected>();
+    public SceneAndScoreManagment.FoodItemsCollected CurrentFoodInArea;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +27,27 @@ public class CookingRoundOne : MonoBehaviour
             case SceneAndScoreManagment.Recipie.Hamburger:
                 IngredientsNeeded = 5;
                 break;
+        }
+       /* switch (sasm.currentRecipie)
+        {
+            case SceneAndScoreManagment.Recipie.Pizza:
+                IngredientsNeeded = 4;
+                recipieIngredients.Add(SceneAndScoreManagment.FoodItemsCollected.Pizza_Dough);
+                recipieIngredients.Add(SceneAndScoreManagment.FoodItemsCollected.Pizza_Pineapple);
+                recipieIngredients.Add(SceneAndScoreManagment.FoodItemsCollected.Pizza_Sauce);
+                recipieIngredients.Add(SceneAndScoreManagment.FoodItemsCollected.Pizza_Peperoni);
+                break;
+            case SceneAndScoreManagment.Recipie.Hamburger:
+                IngredientsNeeded = 5;
+                recipieIngredients.Add(SceneAndScoreManagment.FoodItemsCollected.Burger_Bun);
+                recipieIngredients.Add(SceneAndScoreManagment.FoodItemsCollected.Burger_Cheese);
+                recipieIngredients.Add(SceneAndScoreManagment.FoodItemsCollected.Burger_ketchapp);
+                recipieIngredients.Add(SceneAndScoreManagment.FoodItemsCollected.Burger_Lettuce);
+                recipieIngredients.Add(SceneAndScoreManagment.FoodItemsCollected.Burger_Mustard);
+                break;
             default:
                 break;
-        }
+        }*/ //moved to sasm
     }
 
     // Update is called once per frame
@@ -54,6 +74,8 @@ public class CookingRoundOne : MonoBehaviour
         if (other.gameObject.CompareTag("CookingIngredient"))
         {
             FoodInArea = true;
+            CurrentFoodInArea = other.gameObject.GetComponent<CookingPhaseOneFood>().whatAmI;
+            FoodThatIsInTheArea = other.gameObject;
             /*print("Cooking Ingredient Entered");*/
         }
     }
@@ -74,8 +96,11 @@ public class CookingRoundOne : MonoBehaviour
     {
         if (FoodInArea)
         {
-            print("Food Was in the area when button was pressed");
+            /*print("Food Was in the area when button was pressed");*/
+            FoodCollectedInRoundOne.Add(CurrentFoodInArea);
+            FoodThatIsInTheArea.GetComponent<CookingPhaseOneFood>().PostAnimation();
+            CurrentIngredientCount++;
         }
-        else print("Food wasn't in the area when the button was pressed");
+        /*else print("Food wasn't in the area when the button was pressed");*/
     }
 }

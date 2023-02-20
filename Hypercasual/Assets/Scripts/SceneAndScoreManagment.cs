@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneAndScoreManagment : MonoBehaviour
 {
+    public PhaseTwoTime pTT;
+    public List<FoodItemsCollected> recipieIngredients = new List<FoodItemsCollected>();
+    public int round, phase;
     public enum Recipie { Pizza, Hamburger};
     public Recipie currentRecipie;
     public SpriteLibrary SL;
@@ -23,6 +26,8 @@ public class SceneAndScoreManagment : MonoBehaviour
     }
     void Start()
     {
+       
+        
         /*DontDestroyOnLoad(this.gameObject);
         if (GameObject.FindGameObjectsWithTag("SceneAndScore").Length > 1)
         {
@@ -32,7 +37,7 @@ public class SceneAndScoreManagment : MonoBehaviour
         //test
 
 
-        
+
     }
 
     // Update is called once per frame
@@ -43,17 +48,61 @@ public class SceneAndScoreManagment : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
+    public void setRecipie(Recipie setittothis)
+    {
+        switch (setittothis)
+        {
+            case Recipie.Pizza:
+                currentRecipie = Recipie.Pizza;
+                break;
+            case Recipie.Hamburger:
+                currentRecipie = Recipie.Hamburger;
+                break;
+            default:
+                break;
+        }
+        setRecipieIngridients();
+
+    }
+
+    public void setRecipieIngridients()
+    {
+        switch (currentRecipie)
+        {
+            case Recipie.Pizza:
+                recipieIngredients.Add(FoodItemsCollected.Pizza_Dough);
+                recipieIngredients.Add(FoodItemsCollected.Pizza_Pineapple);
+                recipieIngredients.Add(FoodItemsCollected.Pizza_Sauce);
+                recipieIngredients.Add(FoodItemsCollected.Pizza_Peperoni);
+                break;
+            case Recipie.Hamburger:
+                recipieIngredients.Add(FoodItemsCollected.Burger_Bun);
+                recipieIngredients.Add(FoodItemsCollected.Burger_Cheese);
+                recipieIngredients.Add(FoodItemsCollected.Burger_ketchapp);
+                recipieIngredients.Add(FoodItemsCollected.Burger_Lettuce);
+                recipieIngredients.Add(FoodItemsCollected.Burger_Mustard);
+                break;
+            default:
+                break;
+        }
+    }
 
     public FoodItemsCollected SpawnNext()
     {
-        if (whatWasCollected.Capacity > 0)
+        if (whatWasCollected.Count>0)
         {
             FoodItemsCollected temp;
             temp = whatWasCollected[0];
             whatWasCollected.RemoveAt(0);
             return temp;
         }
-        else return FoodItemsCollected.none_left;
+        else
+        {
+            pTT.CheckWork();
+            print("Nothing left to ship"); 
+            return FoodItemsCollected.none_left;
+            
+        }
         
     }
     

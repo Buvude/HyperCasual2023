@@ -7,10 +7,14 @@ public class CookingPhaseOneFood : MonoBehaviour
     /*public int CurrentIngredientCount;
     private int IngredientsNeeded = 0;*/
     public Animator selfAnimation;
-    /*public SceneAndScoreManagment sasm;*/
+    public SceneAndScoreManagment sasm;
+    public SceneAndScoreManagment.FoodItemsCollected whatAmI;
+    public FoodSpawner FS;
     // Start is called before the first frame update
     void Start()
     {
+        sasm = GameObject.FindGameObjectWithTag("SceneAndScore").GetComponent<SceneAndScoreManagment>();
+        FS = GameObject.FindGameObjectWithTag("FoodSpawner").GetComponent<FoodSpawner>();
         
     }
 
@@ -23,6 +27,8 @@ public class CookingPhaseOneFood : MonoBehaviour
     public void PostAnimation()
     {
         print("Made it to post animation");
+        FS.SpawnNextFood(sasm.SpawnNext());
         selfAnimation.enabled = false;
+        Destroy(this.gameObject);
     }
 }
