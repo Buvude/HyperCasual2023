@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8297452102105327270}
   - component: {fileID: 1681366700866707881}
+  - component: {fileID: -3155747967747401194}
   m_Layer: 0
   m_Name: Scene and Score Manager
   m_TagString: SceneAndScore
@@ -44,6 +45,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3658c7feabcec41948bbe2c7032ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SL: {fileID: -3155747967747401194}
+  FS: {fileID: 0}
   whatWasCollected: 
   GoodItemScore: 0
   BadItemScore: 0
+--- !u!114 &-3155747967747401194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4843979193986693545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5fd6a61d041de40ab397bef6ed14d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hBurgBun: {fileID: 21300000, guid: a4af4781d2e99ce4ba37bfda3f78a509, type: 3}
+  hBurgLetuce: {fileID: 21300000, guid: 6202b04104877ef4aa6b9cd44bd84086, type: 3}
+  hBurgCheese: {fileID: 21300000, guid: f7e74e8ab5e584240b11c2693d42b12d, type: 3}
+  hBurgKetchapp: {fileID: 21300000, guid: f567bca5889e12048a002e8aae2b48ab, type: 3}
+  hBurgMustard: {fileID: 21300000, guid: bbbe8a7b52bb990438fd8f42e7c714c9, type: 3}
+  PizzDough: {fileID: 21300000, guid: 3f0e784b70f644f4abd12f7b55f68fbd, type: 3}
+  PizzBestTopping: {fileID: 21300000, guid: 5faf0ebc27e49ff4a98e4a15e5063d8c, type: 3}
+  PizzPep: {fileID: 21300000, guid: f0040022f585b5042940615f87eab2e8, type: 3}
+  PizzSauce: {fileID: 21300000, guid: d5f719add60f2f743af41a3fdfb8c9ce, type: 3}

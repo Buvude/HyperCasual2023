@@ -8,6 +8,7 @@ TagManager:
   - needed ingredient
   - unNeededIngredients
   - dumpy
+  - CookingIngredient
   layers:
   - Default
   - TransparentFX

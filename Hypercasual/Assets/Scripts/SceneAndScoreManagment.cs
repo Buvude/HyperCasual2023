@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneAndScoreManagment : MonoBehaviour
 {
+    public enum Recipie { Pizza, Hamburger};
+    public Recipie currentRecipie;
+    public SpriteLibrary SL;
     public FoodSpawner FS;
-    public enum FoodItemsCollected {Pizza_Dough, Pizza_Pineapple, Pizza_Sauce, Pizza_Peperoni, Burger_Bun, Burger_Cheese, Burger_ketchapp, Burger_Mustard, Burger_Lettuce };
+    public enum FoodItemsCollected {Pizza_Dough, Pizza_Pineapple, Pizza_Sauce, Pizza_Peperoni, Burger_Bun, Burger_Cheese, Burger_ketchapp, Burger_Mustard, Burger_Lettuce, none_left };
     public List<FoodItemsCollected> whatWasCollected=new List<FoodItemsCollected>();
     public int GoodItemScore, BadItemScore;
     // Start is called before the first frame update
@@ -25,6 +28,11 @@ public class SceneAndScoreManagment : MonoBehaviour
         {
             Destroy(this.gameObject);
         }*/
+
+        //test
+
+
+        
     }
 
     // Update is called once per frame
@@ -38,10 +46,15 @@ public class SceneAndScoreManagment : MonoBehaviour
 
     public FoodItemsCollected SpawnNext()
     {
-        FoodItemsCollected temp;
-        temp = whatWasCollected[0];
-        whatWasCollected.RemoveAt(0);
-        return temp;
+        if (whatWasCollected.Capacity > 0)
+        {
+            FoodItemsCollected temp;
+            temp = whatWasCollected[0];
+            whatWasCollected.RemoveAt(0);
+            return temp;
+        }
+        else return FoodItemsCollected.none_left;
+        
     }
     
 }
