@@ -15,6 +15,7 @@ public class SceneAndScoreManagment : MonoBehaviour
     public enum FoodItemsCollected {Pizza_Dough, Pizza_Pineapple, Pizza_Sauce, Pizza_Peperoni, Burger_Bun, Burger_Cheese, Burger_ketchapp, Burger_Mustard, Burger_Lettuce, none_left };
     public List<FoodItemsCollected> whatWasCollected=new List<FoodItemsCollected>();
     public int GoodItemScore, BadItemScore;
+    public ObjectSpawning OS;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -48,15 +49,31 @@ public class SceneAndScoreManagment : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
+    public void setToBurger()
+    {
+        setRecipie(Recipie.Hamburger);
+    }
+
+    public void setToPizza()
+    {
+        setRecipie(Recipie.Pizza);
+    }
+
+    public void ontoPhase2()
+    {
+        SceneManager.LoadScene(1);
+    }
     public void setRecipie(Recipie setittothis)
     {
         switch (setittothis)
         {
             case Recipie.Pizza:
                 currentRecipie = Recipie.Pizza;
+                OS.setSprites();
                 break;
             case Recipie.Hamburger:
                 currentRecipie = Recipie.Hamburger;
+                OS.setSprites();
                 break;
             default:
                 break;
@@ -85,6 +102,7 @@ public class SceneAndScoreManagment : MonoBehaviour
             default:
                 break;
         }
+        GameObject.FindGameObjectWithTag("Obstacle spawner").GetComponent<ObjectSpawning>().ChooseNextItem();
     }
 
     public FoodItemsCollected SpawnNext()

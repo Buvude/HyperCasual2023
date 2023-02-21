@@ -9,9 +9,11 @@ public class GoodCollectables : MonoBehaviour
     public bool collected;
     public ObjectSpawning OS;
     public List<Sprite> foodItem = new List<Sprite>();
+    public SceneAndScoreManagment sasm;
     // Start is called before the first frame update
     void Start()
     {
+        sasm = GameObject.FindGameObjectWithTag("SceneAndScore").GetComponent<SceneAndScoreManagment>();
         Debug.Log("test");
     }
 

@@ -6,22 +6,24 @@ using TMPro;
 public class ObjectSpawning : MonoBehaviour
 {
     public Animator dumpy, goodColect, badCollect;
-    public int nOGIL, nOBIL, nODL;
-    private int randomNumberToGenerate, randomChoice, totalToGenerate;
+    public int nOGIL, nOBIL, nODL, totalToGenerate;
+    private int randomNumberToGenerate, randomChoice;
     private bool sasmSet=false;
     public SceneAndScoreManagment sASM;
     public TextMeshProUGUI goodItemCounter, badItemCounter;
     public int gIN=0, bIN=0;
     public List<GameObject> ObjectsSpawned = new List<GameObject>();
+    public int numberofGoodItemsNeeded=0;
     // Start is called before the first frame update
     void Start()
     {
-        totalToGenerate = nOGIL + nOBIL + nODL;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (GameObject.FindGameObjectWithTag("needed ingredient").GetComponent<GoodCollectables>().collected)
         {
             GameObject.FindGameObjectWithTag("needed ingredient").GetComponent<GoodCollectables>().ResetCol();
@@ -58,21 +60,72 @@ public class ObjectSpawning : MonoBehaviour
         {
             setSASM(GameObject.FindGameObjectWithTag("SceneAndScore").GetComponent<SceneAndScoreManagment>());
         }
-        goodItemCounter.text = "Needed ingredients: " + gIN + "/5";
+        goodItemCounter.text = "Needed ingredients: " + gIN + "/"+numberofGoodItemsNeeded;
         badItemCounter.text = "Uneeded ingredients: " + bIN;
-       /* if (gIN == 5)
+        if (totalToGenerate <= 0)
         {
-            LevelTransisitonTime();
-        }*/ //making the difficulty scalable
+            sASM.ontoPhase2();
+        }
+        /* if (gIN == 5)
+         {
+             LevelTransisitonTime();
+         }*/ //making the difficulty scalable
+    }
+
+    public void calculateTotal()
+    {
+        totalToGenerate = nOGIL + nOBIL + nODL;
     }
     public void setSASM(SceneAndScoreManagment sassy)
     {
         sASM = sassy;
+        sASM.OS = this;
         sasmSet = true;
     }
     public void LevelTransisitonTime()
     {
-        
+        sASM.ontoPhase2();
+    }
+
+    public void setSprites()
+    {
+        switch (sASM.currentRecipie)
+        {
+            case SceneAndScoreManagment.Recipie.Pizza:
+                goodColect.GetComponent<GoodCollectables>().foodItem.Add(sASM.SL.PizzDough);
+                goodColect.GetComponent<GoodCollectables>().foodItem.Add(sASM.SL.PizzBestTopping);
+                goodColect.GetComponent<GoodCollectables>().foodItem.Add(sASM.SL.PizzPep);
+                goodColect.GetComponent<GoodCollectables>().foodItem.Add(sASM.SL.PizzSauce);
+                badCollect.GetComponent<BadCollectables>().foodItem.Add(sASM.SL.hBurgBun);
+                badCollect.GetComponent<BadCollectables>().foodItem.Add(sASM.SL.hBurgCheese);
+                badCollect.GetComponent<BadCollectables>().foodItem.Add(sASM.SL.hBurgKetchapp);
+                badCollect.GetComponent<BadCollectables>().foodItem.Add(sASM.SL.hBurgLetuce);
+                badCollect.GetComponent<BadCollectables>().foodItem.Add(sASM.SL.hBurgMustard);
+                nOGIL = 4;
+                nOBIL = 5;
+                nODL = 0;
+                numberofGoodItemsNeeded = 4;
+                calculateTotal();
+                break;
+            case SceneAndScoreManagment.Recipie.Hamburger:
+                badCollect.GetComponent<BadCollectables>().foodItem.Add(sASM.SL.PizzDough);
+                badCollect.GetComponent<BadCollectables>().foodItem.Add(sASM.SL.PizzBestTopping);
+                badCollect.GetComponent<BadCollectables>().foodItem.Add(sASM.SL.PizzPep);
+                badCollect.GetComponent<BadCollectables>().foodItem.Add(sASM.SL.PizzSauce);
+                goodColect.GetComponent<GoodCollectables>().foodItem.Add(sASM.SL.hBurgBun);
+                goodColect.GetComponent<GoodCollectables>().foodItem.Add(sASM.SL.hBurgCheese);
+                goodColect.GetComponent<GoodCollectables>().foodItem.Add(sASM.SL.hBurgKetchapp);
+                goodColect.GetComponent<GoodCollectables>().foodItem.Add(sASM.SL.hBurgLetuce);
+                goodColect.GetComponent<GoodCollectables>().foodItem.Add(sASM.SL.hBurgMustard);
+                nOBIL = 4;
+                nOGIL = 5;
+                nODL = 0;
+                numberofGoodItemsNeeded = 5;
+                calculateTotal();
+                break;
+            default:
+                break;
+        }
     }
 
     public void ChooseNextItem()
@@ -81,20 +134,20 @@ public class ObjectSpawning : MonoBehaviour
         {
             LevelTransisitonTime();
         }
-        randomChoice= Random.Range(1, 4);
+        randomChoice= Random.Range(1, 3);
         switch (randomChoice)
         {
-            case 1:
+            /*case 1:
                 {
                     SpawnDumpy();
                     break;
-                }
+                }*/
             case 2:
                 {
                     SpawnGC();
                     break;
                 }
-            case 3:
+            case 1:
                 {
                     SpawnBC();
                     break;
@@ -118,6 +171,8 @@ public class ObjectSpawning : MonoBehaviour
     {
         if (nOGIL > 0)
         {
+            goodColect.GetComponent<SpriteRenderer>().sprite=goodColect.GetComponent<GoodCollectables>().foodItem[0];
+            goodColect.GetComponent<GoodCollectables>().foodItem.RemoveAt(0);
             goodColect.SetTrigger("Move");
         }
         else
@@ -131,6 +186,8 @@ public class ObjectSpawning : MonoBehaviour
     {
         if (nOBIL > 0)
         {
+            badCollect.GetComponent<SpriteRenderer>().sprite = badCollect.GetComponent<BadCollectables>().foodItem[0];
+            badCollect.GetComponent<BadCollectables>().foodItem.RemoveAt(0);
             badCollect.SetTrigger("Move");
         }
         else

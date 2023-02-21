@@ -59,6 +59,7 @@ public class PhaseTwoTime : MonoBehaviour
         switch (sasm.currentRecipie)
         {
             case SceneAndScoreManagment.Recipie.Pizza:
+                /*LossPizza.GetComponent<Endings>();*/
                 LossPizza.SetActive(true);
                 break;
             case SceneAndScoreManagment.Recipie.Hamburger:
