@@ -175,6 +175,10 @@ public class ObjectSpawning : MonoBehaviour
             goodColect.GetComponent<GoodCollectables>().foodItem.RemoveAt(0);
             goodColect.SetTrigger("Move");
         }
+        else if (totalToGenerate == 0)
+        {
+            sASM.ontoPhase2();
+        }
         else
         {
             SpawnBC();
@@ -190,9 +194,13 @@ public class ObjectSpawning : MonoBehaviour
             badCollect.GetComponent<BadCollectables>().foodItem.RemoveAt(0);
             badCollect.SetTrigger("Move");
         }
+        else if (totalToGenerate == 0)
+        {
+            sASM.ontoPhase2();
+        }
         else
         {
-            SpawnDumpy();
+            SpawnGC();
         }
         
     }

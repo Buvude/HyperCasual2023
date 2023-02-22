@@ -48,13 +48,16 @@ public class GoodCollectables : MonoBehaviour
     {
         if (privcol)
         {
+            sasm.updateWWC(true, true);
             collected = true;
         }
         else
         {
+            sasm.updateWWC(true, false);
             ResetPosition();
         }
         OS.nOGIL--;
+        OS.totalToGenerate--;
         OS.ChooseNextItem();
     }
 }

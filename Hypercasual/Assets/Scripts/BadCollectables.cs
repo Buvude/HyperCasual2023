@@ -9,9 +9,11 @@ public class BadCollectables : MonoBehaviour
     public bool collected;
     public List<Sprite> foodItem = new List<Sprite>();
     public ObjectSpawning OS;
+    public SceneAndScoreManagment sasm;
     // Start is called before the first frame update
     void Start()
     {
+        sasm = GameObject.FindGameObjectWithTag("SceneAndScore").GetComponent<SceneAndScoreManagment>();
         Debug.Log("test");
     }
 
@@ -46,13 +48,16 @@ public class BadCollectables : MonoBehaviour
     {
         if (privcol)
         {
+            sasm.updateWWC(false, true);
             collected = true;
         }
         else
         {
+            sasm.updateWWC(false, true);
             ResetPosition();
         }
         OS.nOBIL--;
+        OS.totalToGenerate--;
         OS.ChooseNextItem();
     }
 }

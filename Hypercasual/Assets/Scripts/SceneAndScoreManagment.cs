@@ -16,6 +16,7 @@ public class SceneAndScoreManagment : MonoBehaviour
     public List<FoodItemsCollected> whatWasCollected=new List<FoodItemsCollected>();
     public int GoodItemScore, BadItemScore;
     public ObjectSpawning OS;
+    public List<FoodItemsCollected> BurgerOrder = new List<FoodItemsCollected>(), PizzaOrder = new List<FoodItemsCollected>();
     // Start is called before the first frame update
     private void Awake()
     {
@@ -80,6 +81,67 @@ public class SceneAndScoreManagment : MonoBehaviour
         }
         setRecipieIngridients();
 
+    }
+
+    public void updateWWC(bool goodCollect, bool collected)
+    {
+        switch (currentRecipie)
+        {
+            case Recipie.Pizza:
+                if (goodCollect)
+                {
+                    if (collected)
+                    {
+                        whatWasCollected.Add(PizzaOrder[0]);
+                        PizzaOrder.RemoveAt(0);
+                    }
+                    else
+                    {
+                        PizzaOrder.RemoveAt(0);
+                    }
+                }
+                else
+                {
+                    if (collected)
+                    {
+                        whatWasCollected.Add(BurgerOrder[0]);
+                        BurgerOrder.RemoveAt(0);
+                    }
+                    else
+                    {
+                        BurgerOrder.RemoveAt(0);
+                    }
+                }
+                break;
+            case Recipie.Hamburger:
+                if (goodCollect)
+                {
+                    if (collected)
+                    {
+                        whatWasCollected.Add(BurgerOrder[0]);
+                        BurgerOrder.RemoveAt(0);
+                    }
+                    else
+                    {
+                        BurgerOrder.RemoveAt(0);
+                    }
+                }
+                else
+                {
+                    if (collected)
+                    {
+                        whatWasCollected.Add(PizzaOrder[0]);
+                        PizzaOrder.RemoveAt(0);
+                    }
+                    else
+                    {
+                        PizzaOrder.RemoveAt(0);
+                    }
+                }
+                    break;
+            default:
+                break;
+        }
     }
 
     public void setRecipieIngridients()

@@ -15,6 +15,7 @@ public class CookingRoundOne : MonoBehaviour
     private int IngredientsNeeded = 0;
     public List<SceneAndScoreManagment.FoodItemsCollected> FoodCollectedInRoundOne = new List<SceneAndScoreManagment.FoodItemsCollected>();
     public SceneAndScoreManagment.FoodItemsCollected CurrentFoodInArea;
+    public SpriteRenderer Example;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,11 @@ public class CookingRoundOne : MonoBehaviour
         {
             case SceneAndScoreManagment.Recipie.Pizza:
                 IngredientsNeeded = 4;
+                Example.sprite = sasm.SL.PizzaWin;
                 break;
             case SceneAndScoreManagment.Recipie.Hamburger:
                 IngredientsNeeded = 5;
+                Example.sprite = sasm.SL.BurgerWin;
                 break;
         }
        /* switch (sasm.currentRecipie)

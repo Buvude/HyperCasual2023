@@ -12,4 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Cooking.unity
     guid: 3324901d5d4a38244b8de637d1dc6e07
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 059ee73397ea2734d9cf29e3644148cc, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 3a70055925fe08c4c8fb62d4d31920a9, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: ea27d4a3eba9ac245835863a2671ad51, type: 2}
